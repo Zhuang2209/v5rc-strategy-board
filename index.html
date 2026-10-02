@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V5RC Override Strategy Board</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #333333; }
+        
+        .tool-btn {
+            display: block; width: 100%; margin-bottom: 5px; padding: 6px; 
+            cursor: pointer; background: #fff; border: 1px solid #ccc; border-radius: 4px;
+        }
+        .tool-btn:hover { background: #eee; }
+    </style>
+</head>
+<body>
+    
+    <!-- Retractable UI Panel -->
+    <div id="control-panel" style="position: fixed; top: 20px; left: 20px; background: rgba(30, 30, 30, 0.95); padding: 15px; border-radius: 8px; color: white; font-family: sans-serif; z-index: 1000; box-shadow: 0px 4px 10px rgba(0,0,0,0.5); width: 160px;">
+        
+        <button id="toggle-menu" style="width: 100%; padding: 8px; background: #555; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 10px;">
+            ☰ Controls
+        </button>
+        
+        <div id="menu-content">
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 1px solid #666; padding-bottom: 5px;">Modes</h3>
+            <button id="mode-empty" class="tool-btn">Empty Field</button>
+            <button id="mode-gameready" class="tool-btn">Game Ready</button>
+            <button id="mode-drawing" class="tool-btn">Drawing Mode</button>
+            
+            <h3 style="margin: 15px 0 10px 0; font-size: 14px; border-bottom: 1px solid #666; padding-bottom: 5px;">Toolbox</h3>
+            <button id="spawn-cup" class="tool-btn">Add Cup</button>
+            <button id="spawn-ry" class="tool-btn pin-ry">Red/Yellow Pin</button>
+            <button id="spawn-by" class="tool-btn pin-by">Blue/Yellow Pin</button>
+            <button id="spawn-yy" class="tool-btn pin-yy">Yellow/Yellow Pin</button>
+            <button id="spawn-rb" class="tool-btn pin-rb">Red/Blue Pin</button>
+        </div>
+    </div>
+    <div id="scoreboard" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; font-family: sans-serif; z-index: 100;">
+    <div style="background: rgba(200, 30, 30, 0.9); color: white; padding: 10px 20px; border-radius: 8px; font-size: 24px; font-weight: bold; border: 2px solid #fff;">
+        RED: <span id="score-red">0</span>
+    </div>
+    <div style="background: rgba(30, 100, 200, 0.9); color: white; padding: 10px 20px; border-radius: 8px; font-size: 24px; font-weight: bold; border: 2px solid #fff;">
+        BLUE: <span id="score-blue">0</span>
+    </div>
+</div>
+    <!-- Coordinate Tracker -->
+    <div id="coords" style="position: fixed; bottom: 20px; left: 20px; color: white; font-family: monospace; background: rgba(0,0,0,0.7); padding: 10px; border-radius: 4px; z-index: 1000;">
+        X: 0.0 | Z: 0.0
+    </div>
+
+    <!-- Import Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    
+    <!-- Link to our main JavaScript file -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
